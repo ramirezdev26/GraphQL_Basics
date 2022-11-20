@@ -1,4 +1,4 @@
-# GraphQL_Basics
+# WebCourses_Graphql
 This backend is for a learning web courses page. Susch as Platzi or Udemy.
 Using of express.js with Graphql connected to a MongoDB data base.
 
