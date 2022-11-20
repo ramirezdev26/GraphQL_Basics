@@ -1,4 +1,4 @@
-const connectDb = require('./db')
+const connectDb = require('./db/db')
 const { ObjectID } = require('mongodb')
 
 module.exports =  {
@@ -28,14 +28,14 @@ module.exports =  {
     },
     getPeople: async () => {
         let db
-        let students = []
+        let people = []
         try {
             db = await connectDb()
-            students = await db.collection('students').find().toArray()
+            people = await db.collection('students').find().toArray()
         } catch (error) {
             console.log(error)
         }
-        return students
+        return people
     },
     getPerson: async (root, { id }) => {
         let db
@@ -88,5 +88,6 @@ module.exports =  {
             console.log(error)
         }
         return items
-    }
+    },
+    
 }

@@ -1,4 +1,4 @@
-const connectDB = require('./db')
+const connectDB = require('./db/db')
 const { ObjectID } = require('mongodb')
 
 
@@ -20,18 +20,6 @@ module.exports = {
             console.error(error)
         }
         return newCourse
-    },
-    createStudent: async (root, {input}) => {
-        let db
-        let student
-        try {
-            db = await connectDB()
-            student = await db.collection('students').insertOne(input)
-            input._id = student.insertedId
-        } catch (error) {
-            console.log(error)
-        }
-        return input
     },
     editCourse: async (root, {_id, input}) => {
         let db
@@ -61,7 +49,19 @@ module.exports = {
         ? `El curso con id ${_id} fue eliminado exitosamente.`
         : 'No existe el curso con el id indicado';
     },
-    editStudent: async (root, {_id, input}) => {
+    createPerson: async (root, {input}) => {
+        let db
+        let student
+        try {
+            db = await connectDB()
+            student = await db.collection('students').insertOne(input)
+            input._id = student.insertedId
+        } catch (error) {
+            console.log(error)
+        }
+        return input
+    },
+    editPerson: async (root, {_id, input}) => {
         let db
         let student
         try {
@@ -95,5 +95,4 @@ module.exports = {
         }
         return course
     }
-    
 }

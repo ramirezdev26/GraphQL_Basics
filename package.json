@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e js,graphql index",
+    "dev": "nodemon -e js,graphql ./src/index",
+    "start": "SET NODE_ENV=production & ./src/node index",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/ramirezdev26/GraphQL_Basics#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",

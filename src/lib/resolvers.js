@@ -1,5 +1,6 @@
-const queries = require('./queries')
-const mutations = require('./mutations')
+const queries = require('../lib/queries')
+const mutations = require('../lib/mutations')
+
 const types = require('./types')
 
 module.exports = {
