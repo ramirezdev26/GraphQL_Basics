@@ -77,6 +77,19 @@ module.exports = {
         return student
         
     },
+    deletePerson: async (root, {_id}) => {
+        let db
+        let info
+        try {
+            db = await connectDB()
+            info = await db.collection('students').deleteOne({ _id: ObjectID(_id) })
+        } catch (error) {
+            console.log(error)
+        }
+        return info.deletedCount
+        ? `La persona con id ${_id} fue eliminado exitosamente.`
+        : 'No existe una persona con el id indicado';
+    },
     addPeople: async (root, { courseID, personID }) => {
         let db
         let person
